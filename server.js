@@ -8,7 +8,7 @@ const todoRoutes = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 let Todo = require('./todo.model');
-mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI||'mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
 const connection = mongoose.connection;
 const path = require("path");
 app.use(express.static(path.join(__dirname, "client", "build")));
